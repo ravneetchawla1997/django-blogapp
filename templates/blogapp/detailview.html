@@ -1,0 +1,16 @@
+{% extends 'blogapp/base.html'%}
+  {% block parentblock %}
+
+<h1>product Details</h1>
+{% if images  %}
+
+
+  <h1> PID: {{images.id}} </h1>
+  <h1> Name: {{images.name}} </h1>
+  <img src="{{images.pic.url}}" alt="my pic" height="150" width="150">
+  <h1> Author: {{images.author}}</h1>
+
+
+{%endif%}
+
+  {%endblock%}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title> </title>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <meta name="viewport" content="width=device-widht,initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <nav class="navbar fixed-top navbar-expand-md bg-dark navbar-dark">
+<!-- Brand -->
+<a class="navbar-brand bg-warning a" href="#">BLOG</a>
+
+
+<!-- Toggler/collapsibe Button -->
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<!-- Navbar links -->
+<div class="collapse navbar-collapse text-center" id="collapsibleNavbar">
+  <ul class="navbar-nav ml-auto">
+
+
+{% if request.user.is_authenticated is True %}
+<li class="nav-item">
+  <a class="nav-link text-warning" href="#">Welcome{{request.user}}</a>
+</li>
+  <li class="nav-item">
+    <a class="nav-link text-warning" href="/viewfiles/">viewsblog</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-warning" href="/upload">postblog</a>
+  </li>
+    <li class="nav-item">
+      <a class="nav-link text-warning" href="/accounts/logout">Logout</a>
+    </li>
+
+{%else%}
+<li class="nav-item">
+  <a class="nav-link text-warning" href="#">Welcome{{request.user}}</a>
+</li>
+  <li class="nav-item">
+    <a class="nav-link text-warning" href="/viewfiles/">viewsblog</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link text-warning" href="/upload">post blog</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-warning" href="/viewfiles"> view uploaded file</a>
+  </li>
+
+  <li class="nav-item">
+      <a class="nav-link text-warning" href="/accounts/login">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-warning" href="/Signup">Signup</a>
+    </li>
+{%endif%}
+
+
+
+  </ul>
+</div>
+</nav>
+  {% block parentblock %}
+    {%endblock%}
+</html>

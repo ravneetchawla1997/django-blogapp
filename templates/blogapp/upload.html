@@ -1,0 +1,41 @@
+{% extends 'blogapp/base.html' %}
+  {% block parentblock %}
+{% load crispy_forms_tags %}
+
+
+
+
+<div class="row justify-content-center">
+<div class="col-lg-3">
+<form method="post" enctype="multipart/form-data">
+<style media="screen">
+  h1{
+
+    margin-top:15%;
+
+
+  }
+  .alert-dismissible{
+    margin-top:15%;
+  }
+</style>
+  <h1>Upload new file</h1>
+  {% if  msg %}
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{msg}}</strong>
+  </div>
+
+
+
+  {%endif%}
+  {{uploadform | crispy}}
+  {%csrf_token%}
+
+<input type="submit"  value="Save"/>
+</form>
+</div>
+</div>
+
+
+    {%endblock%}

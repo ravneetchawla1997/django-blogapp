@@ -1,0 +1,41 @@
+{% extends 'blogapp/homepage.html'%}
+  {% block parentblock %}
+<table>
+  {% if msg%}
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>{{msg}}</strong>
+    </div>
+  {%endif%}
+  <h1>upload Files details:</h1>
+  {% if images  %}
+  <table class="table table-hover">
+  <tr>
+    <th>ID</th>
+    <th> name</th>
+    <th>Images</th>
+    <th> author</th>
+    <th>Date-Time</th>
+    <th>Description</th>
+
+  </tr>
+  {% for img in images  %}
+
+  <tr>
+
+<td>{{img.id}}</td>
+<td>  {{img.name}} </td>
+<td> <a href="/detailproduct/{{img.id}}"><img src="{{img.pic.url}}" alt="my pic" height="150" width="150"></a></td>
+<td>  {{img.author}}</td>
+<td>  {{img.upload_date}}  </td>
+<td>  {{img.Description}}</td>
+  {% ifequal request.user.username img.author %}
+<td><a href="/deleteproduct/{{img.id}}" class="fa fa-times" onclick="return confirm('are you sure?')"></a></td>
+ {% endifequal %}
+
+{% endfor %}
+{%else%}
+<h2> no data </h2>
+{%endif%}
+</table>
+{% endblock %}
